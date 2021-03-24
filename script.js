@@ -90,19 +90,19 @@ vehicle1.prototype.addSpeed = function(){
 vehicle1.prototype.break = function(){
     this.speed -= 5;
 }
-const Car = function (wheelCount, speed){
+const Car1 = function (wheelCount, speed){
     vehicle1.call(this, wheelCount, speed);
 }
-Car.prototype = Object.create(vehicle1.prototype);
-Car.prototype.blink = function(){
+Car1.prototype = Object.create(vehicle1.prototype);
+Car1.prototype.blink = function(){
     console.log('blink blink');
 }
 
-const Bicycle = function (wheelCount, speed){
+const Bicycle1 = function (wheelCount, speed){
     vehicle1.call(this, wheelCount, speed);
 }
-Bicycle.prototype = Object.create(vehicle1.prototype);
-Bicycle.prototype.beep = function(){
+Bicycle1.prototype = Object.create(vehicle1.prototype);
+Bicycle1.prototype.beep = function(){
     console.log('beep beep');
 }
 //Per ES6 klases:
@@ -111,26 +111,26 @@ class vehicle2 {
         this.wheelCount = wheelCount;
         this.speed = speed;
     }
-    set addSpeed(){
+    addSpeed(){
         this.speed += 10;
     }
-    set break(){
+    break(){
         this.speed -= 5;
     }
 }
-class Car extends vehicle2 {
+class Car2 extends vehicle2 {
     constructor(wheelCount, speed){
         super(wheelCount, speed)
     }
-    set blink(){
+    blink(){
         console.log('blink blink');
     }
 }
-class Bicycle extends vehicle2 {
+class Bicycle2 extends vehicle2 {
     constructor(wheelCount, speed){
         super(wheelCount, speed)
     }
-        set beep(){
+        beep(){
         console.log('beep beep');
     }
 }
@@ -138,28 +138,31 @@ class Bicycle extends vehicle2 {
 const vehicle3 = {
     addSpeed(){
         this.speed += 10;
-    }
+    },
     break(){
         this.speed -= 5;
-}
+},
     parameters(wheelCount, speed){
         this.wheelCount = wheelCount;
         this.speed = speed;
     }
 }
+
 const newVehicle = Object.create(vehicle3);
-const Car = Object.create(vehicle3);
-Car.parameters(wheelCount, speed){
+
+const Car3 = Object.create(vehicle3);
+Car3.parameters = function (wheelCount, speed){
     vehicle3.parameters.call(this, wheelcount, speed);
 }
-Car.blink = function (){
+Car3.blink = function (){
     console.log('blink blink');
 }
-const Bicycle = Object.create(vehicle3);
-Car.parameters(wheelCount, speed){
+
+const Bicycle3 = Object.create(vehicle3);
+Bicycle3.parameters = function (wheelCount, speed){
     vehicle3.parameters.call(this, wheelcount, speed);
 }
-Bicycle.beep = function (){
+Bicycle3.beep = function (){
     console.log('beep beep');
 }
 
